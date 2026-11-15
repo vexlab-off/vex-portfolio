@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vex Labs : applications natives pour Arch Linux</title>
+<meta name="description" content="Vex Labs, c'est vex et Claude : la suite flair, Vex OS et Meridian, des outils de bureau natifs pour Arch Linux, en C++ et Qt 6.">
+<link rel="canonical" href="https://vexlab-off.github.io/vex-portfolio/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vexlab-off.github.io/vex-portfolio/">
+<meta property="og:title" content="Vex Labs : applications natives pour Arch Linux">
+<meta property="og:description" content="La suite flair, Vex OS et Meridian : des outils de bureau pour Arch Linux, écrits par vex et Claude en C++ et Qt 6.">
+<meta property="og:image" content="https://vexlab-off.github.io/vex-portfolio/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#131211">
+<link rel="icon" href="media/logo.png" type="image/png">
+<link rel="preload" href="fonts/cormorant-garamond-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>
+  // Le hero se construit au chargement (js/site.js) : ses pièces sont cachées ici, avant le premier rendu,
+  // sauf si l'on a demandé moins d'animations. Si le script ne démarre pas, tout réapparaît au bout de 4 s.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('vx-build', 'vx-intro', 'vx-rules');
+    setTimeout(() => { if (!window.vxStarted) document.documentElement.classList.remove('vx-build', 'vx-rules'); }, 4000);
+  }
+</script>
+<script src="js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#top">Aller au contenu</a>
+
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a class="logo" href="#top"><img src="media/logo.png" alt="" width="777" height="633">Vex Labs</a>
+    <nav class="nav__links" id="menu" aria-label="Principale">
+      <a href="#projets">Projets</a>
+      <a href="#studio">Studio</a>
+      <a href="#questions">Questions</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap hero__in">
+      <div class="hero__head">
+        <h1 id="hero-h">Je suis vex, développeur d'apps Linux</h1>
+        <div class="hero__aside">
+          <p class="hero__lead">Je conçois mes propres outils pour Arch Linux avec Claude, l'IA d'Anthropic&nbsp;: un gestionnaire de fichiers, un éditeur, un navigateur et mon bureau, Vex OS. Je décide et je teste, on écrit le code à deux.</p>
+          <div class="actions"><a class="btn" href="#projets">Voir mes projets</a><a class="link" href="#contact">M'écrire</a></div>
+        </div>
+      </div>
+      <div class="hero__stage">
+        <!-- l'horloge, d'après l'écran de veille Meridian : l'anneau extérieur fait 24 h (son arc s'allume jusqu'à l'heure),
+             celui du milieu 60 graduations (allumées jusqu'à la minute), l'intérieur 60 s avec le point des secondes -->
+        <svg class="orbit" viewBox="-640 -283 1280 566" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><linearGradient id="tail" gradientUnits="userSpaceOnUse"><stop offset="0" stop-opacity="0"/><stop offset="1"/></linearGradient></defs>
+          <circle class="ring" r="430" pathLength="1"/>
+          <circle class="day" id="clock-day" r="430" pathLength="1440" stroke-dasharray="0 1440" transform="rotate(-90)"/>
+          <circle class="ticks" r="345" pathLength="60" stroke-dasharray="0.04 0.96" transform="rotate(-90)"/>
+          <circle class="done" id="clock-min" r="345" pathLength="60" stroke-dasharray="0 60" transform="rotate(-90)"/>
+          <circle class="ring" r="262" pathLength="1"/>
+          <g id="clock-mdot"><circle class="mdot" cx="0" cy="-345" r="4"/></g>
+          <g id="clock-sec"><path class="tail"/><circle class="dot" cx="0" cy="-262" r="3.5"/></g>
+          <line class="guide" x1="-640" y1="0" x2="-470" y2="0" pathLength="1"/>
+          <line class="guide" x1="640" y1="0" x2="470" y2="0" pathLength="1"/>
+        </svg>
+        <img src="media/logo.png" alt="Le logo de Vex Labs : une main tient un petit graphe de nœuds, sous une silhouette en casquette" width="777" height="633" fetchpriority="high">
+      </div>
+      <p class="clock" aria-hidden="true"><time><span id="clock-h">--</span><span class="clock__colon">:</span><span id="clock-m">--</span></time><span class="clock__s" id="clock-s">--</span><span class="clock__date" id="clock-date"></span></p>
+    </div>
+  </section>
+
+  <section class="section rule" id="projets" aria-labelledby="projets-h">
+    <div class="wrap">
+      <div class="proj__head">
+        <h2 id="projets-h">Projets</h2>
+        <!-- 5 projets au plus ici : la bibliothèque complète viendra sur un autre site -->
+        <div class="proj__bar" role="tablist" aria-label="Choisir un projet">
+          <button type="button" role="tab" id="suite-flair" aria-selected="true" aria-controls="pp-flair">Suite flair</button>
+          <button type="button" role="tab" id="vex-os" aria-selected="false" aria-controls="pp-vexos" tabindex="-1">Vex OS</button>
+          <button type="button" role="tab" id="meridian" aria-selected="false" aria-controls="pp-meridian" tabindex="-1">Meridian</button>
+          <button type="button" role="tab" id="assistant" aria-selected="false" aria-controls="pp-assistant" tabindex="-1">Assistant IA</button>
+          <button type="button" role="tab" id="autres" aria-selected="false" aria-controls="pp-autres" tabindex="-1">Autres</button>
+          <span class="proj__ink" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <article class="proj" id="pp-flair" role="tabpanel" aria-labelledby="suite-flair" tabindex="0">
+        <div class="proj__media"><img src="media/flair.webp" alt="flair, le gestionnaire de fichiers : un dossier de projet ouvert, avec l'aperçu d'une page HTML à droite" width="1800" height="1112" loading="lazy"></div>
+        <div class="proj__text">
+          <p class="meta">Disponible · flair 0.2.0, Flair Code 0.1.0, Flair Web 0.2.0</p>
+          <h3>Suite flair</h3>
+          <p>Trois apps de bureau natives pour Arch Linux&nbsp;: fichiers, code et web. Elles partagent l'accent, les réglages et l'IA, locale ou en ligne.</p>
+          <pre class="code"><span class="c"># une fois le dépôt suite-flair ajouté</span>
+sudo pacman -Syu suite-flair</pre>
+          <a class="link" href="https://vexlab-off.github.io/flair/">Voir la page de la suite</a>
+        </div>
+      </article>
+
+      <article class="proj" id="pp-vexos" role="tabpanel" aria-labelledby="vex-os" tabindex="0" hidden>
+        <div class="proj__media proj__media--contain"><img src="media/plymouth-poster.webp" alt="Écran de démarrage de Vex OS : le logo et le mot VEX OS sur fond noir" width="800" height="400" loading="lazy"></div>
+        <div class="proj__text">
+          <p class="meta">Arch Linux · Hyprland · Lua · Shell</p>
+          <h3>Vex OS</h3>
+          <p>Mon bureau sur Arch Linux et Hyprland&nbsp;: un shell maison, des dotfiles en modules et un script qui remonte tout le poste, jusqu'à l'écran de démarrage.</p>
+        </div>
+      </article>
+
+      <article class="proj" id="pp-meridian" role="tabpanel" aria-labelledby="meridian" tabindex="0" hidden>
+        <div class="proj__media"><img src="media/meridian.webp" alt="Meridian, l'économiseur d'écran : l'heure en grand au centre d'anneaux fins" width="1600" height="1000" loading="lazy"></div>
+        <div class="proj__text">
+          <p class="meta">C++17 · Qt 6 Quick · pour Vex OS</p>
+          <h3>Meridian</h3>
+          <p>L'économiseur d'écran de Vex OS&nbsp;: l'heure sur trois anneaux, pour la journée, l'heure et la minute. Il couvre tous les écrans et s'efface au premier geste.</p>
+        </div>
+      </article>
+
+      <article class="proj" id="pp-assistant" role="tabpanel" aria-labelledby="assistant" tabindex="0" hidden>
+        <div class="proj__media proj__media--empty">En développement, pas encore de capture.</div>
+        <div class="proj__text">
+          <p class="meta">En développement · Python · LLM local</p>
+          <h3>Assistant IA</h3>
+          <p>Un assistant vocal pour le bureau&nbsp;: il écoute, comprend avec un modèle local et agit sur le système. Aucun cloud obligatoire.</p>
+        </div>
+      </article>
+
+      <article class="proj proj--list" id="pp-autres" role="tabpanel" aria-labelledby="autres" tabindex="0" hidden>
+        <div class="proj__text">
+          <p class="meta">En préparation · pas encore en ligne</p>
+          <h3>La bibliothèque Vex Labs</h3>
+          <p>Un futur site pour partager et vendre nos prochains projets, au même endroit. Il n'existe pas encore&nbsp;: il viendra après ce portfolio.</p>
+          <!-- TODO : mettre le lien de la bibliothèque quand le site existera -->
+          <a class="btn" href="#autres">Voir la bibliothèque</a>
+        </div>
+        <ul class="others">
+          <li><h4>Partager</h4><p>Le code et les paquets de chaque projet, avec sa page et ses captures.</p></li>
+          <li><h4>Vendre</h4><p>Certains projets à venir seront payants, pour faire vivre Vex Labs.</p></li>
+          <li><h4>Suivre</h4><p>Les nouveautés de chaque projet, au même endroit que le code.</p></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section rule" id="studio" aria-labelledby="studio-h">
+    <div class="wrap studio">
+      <div class="studio__about">
+        <h2 id="studio-h">Un humain, une IA. <span class="muted">On construit nos outils à deux.</span></h2>
+        <!-- BROUILLON : l'histoire est à réécrire avec vex -->
+        <p>Un studio à deux&nbsp;: on construit des outils de bureau pour Arch Linux, du gestionnaire de fichiers jusqu'au bureau lui-même.</p>
+        <div class="duo">
+          <div class="duo__who">
+            <p class="duo__name">vex</p>
+            <p class="duo__role">humain · Arch Linux</p>
+            <ul><li>choisit quoi construire</li><li>décide de l'allure</li><li>teste chaque version sur son poste</li></ul>
+          </div>
+          <div class="duo__link" aria-hidden="true"><span class="duo__line"></span><span class="duo__dot"></span></div>
+          <div class="duo__who">
+            <p class="duo__name">Claude</p>
+            <p class="duo__role">IA d'Anthropic</p>
+            <ul><li>écrit le code avec vex</li><li>propose des pistes</li><li>relit et explique</li></ul>
+          </div>
+        </div>
+        <dl class="facts">
+          <div><dt>Système</dt><dd>Arch Linux, Hyprland</dd></div>
+          <div><dt>Langages</dt><dd>C++17, QML, Python</dd></div>
+          <div><dt>Licence</dt><dd>MIT (suite flair)</dd></div>
+        </dl>
+      </div>
+      <div class="qa" id="questions">
+        <h3>Questions fréquentes</h3>
+        <details><summary>Qui est Vex Labs&nbsp;?</summary><p>Un studio à deux&nbsp;: moi, vex, sur Arch Linux, et Claude, l'IA d'Anthropic. Ensemble, on construit des outils de bureau&nbsp;: la suite flair, Vex OS et Meridian.</p></details>
+        <details><summary>Pourquoi travailler avec Claude&nbsp;?</summary><p>Parce qu'à deux, on va plus loin. Claude écrit le code avec moi, propose des pistes et explique ses choix. Moi, je décide de ce qu'on construit, je teste et j'apprends en chemin.</p></details>
+        <details><summary>Qu'est-ce qui te différencie des autres vibe codeurs&nbsp;?</summary><p>Je dis clairement que je code avec une IA, et je ne m'arrête pas au premier résultat&nbsp;: chaque version est testée sur mon poste avant d'être publiée, en paquet Arch, avec son code ouvert. Et ce sont des apps natives en C++ et Qt, pas des pages web emballées.</p></details>
+        <details><summary>Les apps sont-elles gratuites&nbsp;?</summary><p>La suite flair, oui&nbsp;: son code est ouvert, sous licence MIT. Certains projets à venir seront payants, sur la future bibliothèque Vex Labs.</p></details>
+        <details><summary>Mes fichiers partent-ils sur internet&nbsp;?</summary><p>Avec un modèle local, tout reste sur la machine. Avec une clé Claude, OpenAI ou Gemini, la demande part chez ce fournisseur.</p></details>
+        <details><summary>Comment installer la suite flair&nbsp;?</summary><p>Ajoutez le dépôt <code>suite-flair</code> à <code>/etc/pacman.conf</code>, puis lancez <code>sudo pacman -Syu suite-flair</code>. La marche à suivre complète est sur la <a href="https://vexlab-off.github.io/flair/">page de la suite</a>.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer rule" id="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <div class="contact">
+      <p class="label">Contact</p>
+      <h2 id="contact-h"><a class="contact__mail" href="mailto:louka.vex@gmail.com">louka.vex@gmail.com<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></h2>
+      <p class="contact__lede">Une question, un bug ou une idée&nbsp;: écrivez-nous, on répond par écrit.</p>
+      <div class="contact__actions">
+        <button type="button" data-copy="louka.vex@gmail.com">Copier l'adresse</button>
+        <a href="https://github.com/vexlab-off">GitHub</a>
+        <output id="copied"></output>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="foot__brand">
+        <a class="logo" href="#top"><img src="media/logo.png" alt="" width="777" height="633" loading="lazy">Vex Labs</a>
+        <p>Applications natives et bureau pour Arch Linux, open source.</p>
+      </div>
+      <div class="foot__col"><h3>Projets</h3><ul><li><a href="#suite-flair">Suite flair</a></li><li><a href="#vex-os">Vex OS</a></li><li><a href="#meridian">Meridian</a></li><li><a href="#assistant">Assistant IA</a></li></ul></div>
+      <div class="foot__col"><h3>Studio</h3><ul><li><a href="#studio">vex et Claude</a></li><li><a href="#questions">Questions</a></li></ul></div>
+      <div class="foot__col"><h3>Code</h3><ul><li><a href="https://github.com/vexlab-off">GitHub</a></li><li><a href="https://vexlab-off.github.io/flair/">Page flair</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Vex Labs, créé par vex et Claude</span>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="cgu.html">CGU</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
